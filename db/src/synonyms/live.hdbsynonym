@@ -1,0 +1,23 @@
+{
+  "CUSTOMER_ATTR": {
+    "target": {
+      "object": "CUSTOMER_ATTR",
+      "schema": "LIVE",
+      "database": "HXE"
+    }
+  },
+  "COUNTRY_TEXT": {
+    "target": {
+      "object": "COUNTRY_TEXT",
+      "schema": "LIVE",
+      "database": "HXE"
+    }
+  },
+  "CUSTOMER_TEXT": {
+    "target": {
+      "object": "CUSTOMER_TEXT",
+      "schema": "LIVE",
+      "database": "HXE"
+    }
+  }
+}

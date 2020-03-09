@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" id="CUSTOMER_CLUSTER" applyPrivilegeType="NONE" dataCategory="CUBE" schemaVersion="3.0" outputViewType="Projection" cacheInvalidationPeriod="NONE" enforceSqlExecution="false">
+<descriptions defaultDescription="CUSTOMER_CLUSTER"/>
+<localVariables/>
+<variableMappings/>
+<dataSources>
+  <DataSource id="CUSTOMER_ATTR">
+    <resourceUri>CUSTOMER_ATTR</resourceUri>
+  </DataSource>
+  <DataSource id="BQ_CLUSTER">
+    <resourceUri>BQ_CLUSTER</resourceUri>
+  </DataSource>
+</dataSources>
+<calculationViews>
+  <calculationView xsi:type="Calculation:JoinView" id="Join_1" cardinality="CN_N" joinType="leftOuter">
+    <viewAttributes>
+      <viewAttribute id="KUNNR"/>
+      <viewAttribute id="LAND1"/>
+      <viewAttribute id="NAME1"/>
+      <viewAttribute id="ADRNR"/>
+      <viewAttribute id="CENTROID_ID" aggregationType="sum"/>
+      <viewAttribute id="vbap_kunnr"/>
+      <viewAttribute id="name1"/>
+      <viewAttribute id="avg_item_price" aggregationType="sum"/>
+      <viewAttribute id="spras"/>
+      <viewAttribute id="land1"/>
+      <viewAttribute id="avg_item_count" aggregationType="sum"/>
+      <viewAttribute id="order_count" aggregationType="sum"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <restrictedViewAttributes/>
+    <input node="CUSTOMER_ATTR">
+      <mapping xsi:type="Calculation:AttributeMapping" target="KUNNR" source="KUNNR"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="LAND1" source="LAND1"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="NAME1" source="NAME1"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ADRNR" source="ADRNR"/>
+    </input>
+    <input node="Projection_1">
+      <mapping xsi:type="Calculation:AttributeMapping" target="CENTROID_ID" source="CENTROID_ID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="vbap_kunnr" source="vbap_kunnr"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="name1" source="name1"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="avg_item_price" source="avg_item_price"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="spras" source="spras"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="land1" source="land1"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="avg_item_count" source="avg_item_count"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="order_count" source="order_count"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="KUNNR" source="vbap_kunnr"/>
+    </input>
+    <joinAttribute name="KUNNR"/>
+  </calculationView>
+  <calculationView xsi:type="Calculation:ProjectionView" id="Projection_1">
+    <viewAttributes>
+      <viewAttribute id="CENTROID_ID"/>
+      <viewAttribute id="vbap_kunnr"/>
+      <viewAttribute id="name1"/>
+      <viewAttribute id="avg_item_price"/>
+      <viewAttribute id="spras"/>
+      <viewAttribute id="land1"/>
+      <viewAttribute id="avg_item_count"/>
+      <viewAttribute id="order_count"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <restrictedViewAttributes/>
+    <input node="BQ_CLUSTER">
+      <mapping xsi:type="Calculation:AttributeMapping" target="CENTROID_ID" source="CENTROID_ID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="vbap_kunnr" source="vbap_kunnr"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="name1" source="name1"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="avg_item_price" source="avg_item_price"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="spras" source="spras"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="land1" source="land1"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="avg_item_count" source="avg_item_count"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="order_count" source="order_count"/>
+    </input>
+  </calculationView>
+</calculationViews>
+<logicalModel id="Join_1">
+  <attributes>
+    <attribute id="KUNNR" order="1" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="KUNNR"/>
+      <keyMapping columnObjectName="Join_1" columnName="KUNNR"/>
+    </attribute>
+    <attribute id="LAND1" order="2" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="LAND1"/>
+      <keyMapping columnObjectName="Join_1" columnName="LAND1"/>
+    </attribute>
+    <attribute id="NAME1" order="3" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="NAME1"/>
+      <keyMapping columnObjectName="Join_1" columnName="NAME1"/>
+    </attribute>
+    <attribute id="CENTROID_ID" order="5" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="CENTROID_ID"/>
+      <keyMapping columnObjectName="Join_1" columnName="CENTROID_ID"/>
+    </attribute>
+    <attribute id="vbap_kunnr" order="6" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="vbap_kunnr"/>
+      <keyMapping columnObjectName="Join_1" columnName="vbap_kunnr"/>
+    </attribute>
+    <attribute id="spras" order="8" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="spras"/>
+      <keyMapping columnObjectName="Join_1" columnName="spras"/>
+    </attribute>
+    <attribute id="land1" order="9" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="land1"/>
+      <keyMapping columnObjectName="Join_1" columnName="land1"/>
+    </attribute>
+  </attributes>
+  <calculatedAttributes/>
+  <baseMeasures>
+    <measure id="ADRNR" order="4" aggregationType="count" measureType="simple">
+      <descriptions defaultDescription="ADRNR"/>
+      <measureMapping columnObjectName="Join_1" columnName="ADRNR"/>
+    </measure>
+    <measure id="avg_item_price" order="7" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="avg_item_price"/>
+      <measureMapping columnObjectName="Join_1" columnName="avg_item_price"/>
+    </measure>
+  </baseMeasures>
+  <calculatedMeasures/>
+  <restrictedMeasures/>
+  <localDimensions/>
+</logicalModel>
+<layout>
+  <shapes>
+    <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+      <upperLeftCorner x="40" y="85"/>
+    </shape>
+  
+    <shape expanded="true" modelObjectName="Join_1" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="-52" y="223"/>
+      <rectangleSize height="30" width="160"/>
+    </shape>
+    <shape modelObjectName="CUSTOMER_ATTR" modelObjectNameSpace="Join_1" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="21" y="21"/>
+      <rectangleSize width="170.224609375"/>
+    </shape>
+    <shape modelObjectName="Projection_1" modelObjectNameSpace="Join_1" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="620" y="30"/>
+      <rectangleSize width="269.77197265625"/>
+    </shape>
+    <shape expanded="true" modelObjectName="Projection_1" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="28" y="338"/>
+      <rectangleSize height="30" width="160"/>
+    </shape>
+  </shapes>
+</layout>
+</Calculation:scenario>

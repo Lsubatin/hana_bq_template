@@ -1,0 +1,13 @@
+{
+  "cc_remote": {
+    "object_owner" : {
+      "global_object_privileges" : [
+        {
+          "name" : "BIGQUERY",
+          "type" : "REMOTE SOURCE",
+          "privileges" : [ "CREATE VIRTUAL TABLE", "DROP", "CREATE REMOTE SUBSCRIPTION" ]
+        }
+      ]
+    }
+  }
+}
