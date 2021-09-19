@@ -11,7 +11,7 @@ https://developers.sap.com/tutorials/gcp-hxe-evt-bq-2.html
 https://developers.sap.com/tutorials/gcp-hxe-evt-bq-3.html
 https://developers.sap.com/tutorials/gcp-hxe-evt-bq-4.html
 
-Or just ping me...
+Or just ping me with an email...
 
 ## Support
 This project is provided "as-is": there is no guarantee that raised issues will be answered or addressed in future releases.
